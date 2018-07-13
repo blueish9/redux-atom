@@ -1,0 +1,19 @@
+{
+  "name": "redux-ion",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indie-blue/redux-ion.git"
+  },
+  "homepage": "https://github.com/indie-blue/redux-ion",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "redux"
+  ],
+  "author": "Quan Vo",
+  "license": "MIT"
+}

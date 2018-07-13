@@ -1,1 +1,1 @@
-# redux-ion
+# redux-atom

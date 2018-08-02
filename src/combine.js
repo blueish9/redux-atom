@@ -9,20 +9,24 @@ import createAtom from "./createAtom";
 /**
  * combine many atoms to a single atom with a new type
  */
-export default combine = (type, ...atoms) => {
+export default function combine(type, ...atoms) {
   const actionParams = [];
   atoms.forEach(atom => {
-    if (atom.isMutable) {
+    if (atom.isMutable)
+    {
       actionParams.push(...atom.actionParams)
     }
   });
   if (checkDuplicateParams(actionParams))
+  {
     throw 'Duplicate parameters when combining atoms';
+  }
 
   const getNewState = (state, action) => {
     let newState = {};
     atoms.forEach(atom => {
-      if (atom.isMutable) {
+      if (atom.isMutable)
+      {
         const data = {};
         atom.actionParams.forEach(param => {
           data[param] = action[param];
@@ -32,7 +36,8 @@ export default combine = (type, ...atoms) => {
           ...atom.getNewState(state, data)
         };
       }
-      else {
+      else
+      {
         newState = {
           ...newState,
           ...atom.getNewState()

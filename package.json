@@ -1,6 +1,6 @@
 {
   "name": "@blueish9/redux-atom",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "",
   "repository": {
     "type": "git",
@@ -8,11 +8,22 @@
   },
   "homepage": "https://github.com/indie-blue/redux-atom",
   "scripts": {
-    "test": "jest"
+    "babel-node": "babel-node --presets=latest",
+    "start": "nodemon --exec npx babel-node -- ./index.js",
+    "test": "jest",
+    "build": "babel src -d dist"
   },
   "keywords": [
     "redux"
   ],
   "author": "Quan Vo",
-  "license": "MIT"
+  "license": "MIT",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
 }

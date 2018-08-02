@@ -7,22 +7,26 @@ import {handler, mapParams} from "./utils";
  * @return: a function which can be invoked to create an action,
  * this function also has a property 'react', which is a function that can react to an action to return new state
  */
-export default createAtom = (
-    {
-      type,
-      actionParams = [],
-      isMutable = actionParams.length > 0,
-      action = defaultAction(type, actionParams),
-      getNewState,
-      react = handler(type, getNewState)
-    }) => {
+export default function createAtom(
+  {
+    type,
+    actionParams = [],
+    isMutable = actionParams.length > 0,
+    action = defaultAction(type, actionParams),
+    getNewState,
+    react = handler(type, getNewState)
+  }) {
   if (!type)
+  {
     throw 'Missing type';
-  if (!type)
+  }
+  if (!getNewState)
+  {
     throw 'Missing getNewState';
+  }
 
   // must assign one by one because action is a function, not an object
-  action.type = type;
+  action.name = type;
   action.actionParams = actionParams;
   action.getNewState = getNewState;
   action.isMutable = isMutable;
@@ -32,12 +36,16 @@ export default createAtom = (
 
 export const defaultAction = (type, actionParams) => (...data) => {
   if (actionParams.length === 0 && data.length === 0)
+  {
     return {
       type
     };
+  }
 
   if (actionParams.length !== data.length)
+  {
     throw `Function needs ${actionParams.length} arguments`;
+  }
 
   return {
     type,

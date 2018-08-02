@@ -13,12 +13,14 @@ const assignData = (state, action) => {
  * @param: actionParams: Array<String>
  * @param: getNewState: Function: (state, action) => {}
  */
-export default atom = (type, actionParams, getNewState = assignData) => {
+export default function atom(type, actionParams, getNewState = assignData) {
   if (typeof actionParams === 'function')
+  {
     return createAtom({
       type,
       getNewState: actionParams
     });
+  }
 
   return createAtom({
     type,

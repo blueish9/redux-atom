@@ -3,7 +3,7 @@
  * Date: 7/10/18
  */
 
-export default createReducer = (initialState, ...atoms) => {
+export default function createReducer(initialState, ...atoms) {
   let reactor = {};
   atoms.forEach(atom => {
     reactor = {

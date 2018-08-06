@@ -23,7 +23,9 @@ export default function createAtom(
     throw 'Missing getNewState';
   }
 
-  const atom = (...data) => defaultAction(type, actionParams, data);
+  const atom = (...data) => {
+    store.dispatch(createAction(type, actionParams, data));
+  };
 
   // must assign one by one because atom is a function, not an object
   atom.type = type;
@@ -32,15 +34,10 @@ export default function createAtom(
   atom.isMutable = isMutable;
   atom.react = react;
 
-  if (store)
-    atom.dispatch = (...data) => {
-      store.dispatch(defaultAction(type, actionParams, data));
-    };
-
   return atom;
 };
 
-const defaultAction = (type, actionParams, data) => {
+const createAction = (type, actionParams, data) => {
   if (actionParams.length === 0 && data.length === 0) {
     return {
       type

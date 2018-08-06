@@ -6,11 +6,11 @@
 import atom from "./atom";
 import createReducer from "./createReducer";
 import combine from "./combine";
-import createAtom from "./createAtom";
+import createAtomMiddleware from "./createAtomMiddleware";
 
 export {
   atom,
   combine,
-  createAtom,
-  createReducer
+  createReducer,
+  createAtomMiddleware
 }

@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@blueish9/redux-atom@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@blueish9/redux-atom/-/redux-atom-1.0.6.tgz#207d47b4cde22bf7edaf4458b4b367e8372c5cc1"
+"@blueish9/redux-atom@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@blueish9/redux-atom/-/redux-atom-1.0.13.tgz#5c27620cd0f4c643e9219e1533e1f0e7b9e58a07"
 
 abab@^1.0.3:
   version "1.0.4"

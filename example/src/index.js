@@ -6,36 +6,40 @@
 import {fetchingTask, fetchTaskSuccess, finishAll, updateCompletedCount} from './atom/Task';
 import rootReducer from './reducer';
 import {fetchingCategory, initCategorySuccess} from './atom/Category';
-import {createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
 import requestApi from "./api";
+import {createAtomMiddleware} from "@blueish9/redux-atom";
 
 
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducer,
+  applyMiddleware(createAtomMiddleware)
+);
 
 // user open app --> show loading indicator while fetching API,
-store.dispatch(fetchingTask());
+fetchingTask();
 
 // fetch API completed, set task list and hide loading indicator
 const task = requestApi('/task');
-store.dispatch(fetchTaskSuccess(task.list, task.completed, task.goal));
+fetchTaskSuccess(task.list, task.completed, task.goal);
 
 // completed some tasks --> update completed count
-store.dispatch(updateCompletedCount(5));
+updateCompletedCount(5);
 
 // finish every tasks
-store.dispatch(finishAll());
+finishAll();
 
 
 /* ---------------- ---------------- ---------------- ---------------- */
 
 
 // user open app --> show loading indicator while fetching API,
-store.dispatch(fetchingCategory());
+fetchingCategory();
 
 // fetch API completed, hide loading indicator, compute default selected category bases on some factors
 const category = requestApi('/category');
 const level = 14;
 const priority = 1;
-store.dispatch(initCategorySuccess(category.list, level, priority));
+initCategorySuccess(category.list, level, priority);
 
 export default store;

@@ -17,7 +17,7 @@ npm install --save @blueish9/redux-atom
 ```
 
 #### 2. How to use
-Step-by-step tutorial: https://medium.com/@blueish/encapsulate-redux-logic-in-an-atom-42f07848d49f
+Step-by-step tutorial: https://medium.com/@blueish/encapsulate-redux-logic-in-an-atom-1657161c8e16
 
 ##### 2.1. Create an atom
 Action type, action creator, action dispatching and reducer logic are all encapsulated in an atom.

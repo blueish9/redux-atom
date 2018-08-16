@@ -10,6 +10,12 @@ import createAtom from "./createAtom";
  * combine many atoms to a single atom with a new type
  */
 export default function combine(type, ...atoms) {
+  if (typeof type !== 'string') {
+    const firstAtom = type;
+    atoms = [firstAtom, ...atoms];
+    type = firstAtom.type;
+  }
+
   const actionParams = [];
   atoms.forEach(atom => {
     if (atom.isMutable)

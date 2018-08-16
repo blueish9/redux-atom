@@ -27,6 +27,8 @@ var assignData = function assignData(state, action) {
  * @param: type: String
  * @param: actionParams: Array<String>
  * @param: getNewState: Function: (state, action) => {}
+ *
+ * need at least 2 parameters
  */
 function atom(type, actionParams) {
   var getNewState = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : assignData;

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -8,7 +8,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports.default = combine;
 
-var _createAtom = require("./createAtom");
+var _createAtom = require('./createAtom');
 
 var _createAtom2 = _interopRequireDefault(_createAtom);
 
@@ -25,6 +25,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function combine(type) {
   for (var _len = arguments.length, atoms = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     atoms[_key - 1] = arguments[_key];
+  }
+
+  if (typeof type !== 'string') {
+    var firstAtom = type;
+    atoms = [firstAtom].concat(_toConsumableArray(atoms));
+    type = firstAtom.type;
   }
 
   var actionParams = [];
